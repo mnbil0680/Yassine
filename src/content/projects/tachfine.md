@@ -16,15 +16,15 @@ I created a comprehensive visual identity system for Tachfine Center, an educati
 
 ### Event Posters & Promotional Materials
 
-| ![Tachfine Key Visual](../../images/tachfine/tachfine%20kv2%20copy.jpg)<br>*Alternative key visual design for Tachfine Center* | ![Gnawa Event Poster](../../images/tachfine/POST%20GNAWA%20TACHFINE.jpg)<br>*Promotional poster for Gnawa cultural event* | ![Saturday Event Poster](../../images/tachfine/POST%20TACHFINE%20SAMEDI%20.jpg)<br>*Weekend event promotional material* |
+| ![Tachfine Key Visual](@images/tachfine/tachfine%20kv2%20copy.jpg) *Alternative key visual design for Tachfine Center* | ![Gnawa Event Poster](@images/tachfine/POST%20GNAWA%20TACHFINE.jpg) *Promotional poster for Gnawa cultural event* | ![Saturday Event Poster](@images/tachfine/POST%20TACHFINE%20SAMEDI%20.jpg) *Weekend event promotional material* |
 |:---:|:---:|:---:|
 
 ### Campaign Materials
 
-| ![Agency Collaboration](../../images/tachfine/Adgency%20-%20Tachfine%20-%20l'ecole%20des%20heros%20copy.jpg)<br>*Educational campaign design - "L'école des héros" (The School of Heroes)* | ![Brand Design](../../images/tachfine/American.jpg)<br>*Brand identity and visual design elements* |
+| ![Agency Collaboration](@images/tachfine/Adgency%20-%20Tachfine%20-%20l'ecole%20des%20heros%20copy.jpg) *Educational campaign design - "L'école des héros" (The School of Heroes)* | ![Brand Design](@images/tachfine/American.jpg) *Brand identity and visual design elements* |
 |:---:|:---:|
 
 ### Design Variations
 
-| ![Design Variant 1](../../images/tachfine/1111.jpg)<br>*Design exploration and creative variation* | ![Design Variant 2](../../images/tachfine/535.jpg)<br>*Alternative layout and composition study* | ![Design Variant 3](../../images/tachfine/554.jpg)<br>*Typography and color scheme exploration* |
+| ![Design Variant 1](@images/tachfine/1111.jpg) *Design exploration and creative variation* | ![Design Variant 2](@images/tachfine/535.jpg) *Alternative layout and composition study* | ![Design Variant 3](@images/tachfine/554.jpg) *Typography and color scheme exploration* |
 |:---:|:---:|:---:|
