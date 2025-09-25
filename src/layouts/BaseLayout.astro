@@ -3,6 +3,9 @@
 import MainHead from "@components/MainHead.astro"
 import Nav from "@components/Nav.astro"
 import Footer from "@components/Footer.astro"
+const BASE = import.meta.env.BASE_URL
+const BG_VER = 'v2'
+const bgCSS = `:root {\n  --bg-gradient: linear-gradient(transparent, transparent);\n  --bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));\n  --bg-blend-mode: darken;\n  --bg-gradient-size: calc(var(--bg-scale) * 125%);\n  --bg-image-aspect-ratio: 2.25;\n  --bg-image-main-curves: url(${BASE}images/backgrounds/bg-main-light.svg?${BG_VER});\n  --bg-image-main: url(${BASE}images/backgrounds/bg-main-light-800w.jpg?${BG_VER});\n  --bg-scale: 1.68;\n  --bg-svg-blend-mode: overlay;\n}\n:root.theme-dark {\n  --bg-blend-mode: lighten;\n  --bg-image-main-curves: url(${BASE}images/backgrounds/bg-main-dark.svg?${BG_VER});\n  --bg-image-main: url(${BASE}images/backgrounds/bg-main-dark-800w.jpg?${BG_VER});\n  --bg-svg-blend-mode: darken;\n}\n@media (min-width: 50em) {\n  :root {\n    --bg-image-main: url(${BASE}images/backgrounds/bg-main-light-1440w.jpg?${BG_VER});\n    --bg-scale: 1;\n  }\n  :root.theme-dark {\n    --bg-image-main: url(${BASE}images/backgrounds/bg-main-dark-1440w.jpg?${BG_VER});\n  }\n}\n.backgrounds {\n  min-height: 100%;\n  isolation: isolate;\n  background: var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat, var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat, var(--gray-999);\n  background-blend-mode: var(--bg-svg-blend-mode), normal, normal;\n}\n@media (forced-colors: active) {\n  .backgrounds {\n    background: none;\n    background-blend-mode: none;\n    --bg-gradient-size: none;\n  }\n}`
 
 interface Props {
   title?: string | undefined
@@ -29,75 +32,7 @@ const { title, description } = Astro.props
         document.documentElement.classList.add("loaded"),
       )
     </script>
-    <script type="module">
-      // Ensure background images work when deployed under a subpath and bust caches.
-      const BASE = import.meta.env.BASE_URL;
-      const VERSION = 'v1'; // bump this to invalidate cached backgrounds
-      if (BASE && BASE !== '/') {
-        const root = document.documentElement;
-        const buildUrl = (name) => `url(${BASE}images/backgrounds/${name}?${VERSION})`;
 
-        const applyTheme = () => {
-          const isDark = root.classList.contains('theme-dark');
-          root.style.setProperty('--bg-image-main-curves', buildUrl(isDark ? 'bg-main-dark.svg' : 'bg-main-light.svg'));
-          // Pick 800w on mobile, 1440w above media query matches. JS can't know media query easily here; keep 800w then CSS upscales.
-          root.style.setProperty('--bg-image-main', buildUrl(isDark ? 'bg-main-dark-800w.jpg' : 'bg-main-light-800w.jpg'));
-        };
-        applyTheme();
-        // Watch for theme class toggles
-        const observer = new MutationObserver(applyTheme);
-        observer.observe(root, { attributes: true, attributeFilter: ['class'] });
-      }
-    </script>
-
-    <style>
-      :root {
-        --bg-gradient: linear-gradient(transparent, transparent);
-        --bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));
-        --bg-blend-mode: darken;
-        --bg-gradient-size: calc(var(--bg-scale) * 125%);
-        --bg-image-aspect-ratio: 2.25;
-        --bg-image-main-curves: url("/images/backgrounds/bg-main-light.svg");
-        --bg-image-main: url("/images/backgrounds/bg-main-light-800w.jpg");
-        --bg-scale: 1.68;
-        --bg-svg-blend-mode: overlay;
-      }
-
-      :root.theme-dark {
-        --bg-blend-mode: lighten;
-        --bg-image-main-curves: url("/images/backgrounds/bg-main-dark.svg");
-        --bg-image-main: url("/images/backgrounds/bg-main-dark-800w.jpg");
-        --bg-svg-blend-mode: darken;
-      }
-
-      @media (min-width: 50em) {
-        :root {
-          --bg-image-main: url("/images/backgrounds/bg-main-light-1440w.jpg");
-          --bg-scale: 1;
-        }
-        :root.theme-dark {
-          --bg-image-main: url("/images/backgrounds/bg-main-dark-1440w.jpg");
-        }
-      }
-
-      .backgrounds {
-        min-height: 100%;
-        isolation: isolate;
-        background:
-          var(--bg-image-main-curves) top center/var(--bg-gradient-size)
-            no-repeat,
-          var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
-          var(--gray-999);
-        background-blend-mode: var(--bg-svg-blend-mode), normal, normal;
-      }
-      @media (forced-colors: active) {
-        /* Deactivate custom backgrounds for high contrast users. */
-        .backgrounds {
-          background: none;
-          background-blend-mode: none;
-          --bg-gradient-size: none;
-        }
-      }
-    </style>
+    <style set:html={bgCSS} />
   </body>
 </html>
